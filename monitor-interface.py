@@ -51,7 +51,7 @@ def mail(alpha, beta, charlie, delta, actual, owner):
         str(hostname) + "@my_email_id"
     )  # SENDER EMAIL ID PREFERABLY DEVICE HOSTNAME
     you = [
-        "your_email_id@organisatoin.com",
+        "your_email_id@organisation.com",
         "team_email_id@organisation.com",
     ]  # RECEIVER EMAIL ID
     msg = MIMEMultipart("alternative")
