@@ -1,55 +1,26 @@
-Introduction
-This code will only work on Nexus Switches Family platform that supports Python Platform 2.7 or greater.
-Modules:
-Following are the modules which comes pre-packed with the nexus box. So, no need to install any of the external modules for the code to work.
-smtplib- https://docs.python.org/3/library/smtplib.html
-cisco & cli- 
-https://content.cisco.com/chapter.sjs?uri=/searchable/chapter/content/en/us/td/docs/ios-xml/ios/prog/configuration/1612/b_1612_programmability_cg/cli_python_module.html.xm
+**Introduction**
+- The code is designed to work on Nexus Switches Family platforms that support Python Platform 2.7 or greater.
+- It uses the `smtplib` module for sending email alerts and Cisco CLI module for interacting with Cisco Nexus switches.
+- smtplib- https://docs.python.org/3/library/smtplib.html
 
-Need of this code-
-Parameters: CRF, INTPUT ERROR, OUTPUT ERROR, GIANTS, COLLISION, etc.
-About all the monitoring tools available in the market, this code serves as a time bound monitoring for the interface’s parameters for its errors.
-When it comes to monitor the basic Level 1 Physical layer, we need to proactively monitor the parameters of physical interface. 
+**Need for the Code**
+- The code is useful for monitoring parameters like CRF, INPUT ERROR, OUTPUT ERROR, GIANTS, COLLISION, etc., of network interfaces.
+- It provides proactive monitoring of physical interface parameters at the Level 1 Physical layer.
 
-About How to Use the Code in Nexus Switches-
+**How to Use the Code on Nexus Switches**
+1. Upload the file named `monitor-interface.py` to the flash file of the Nexus switch.
+2. Execute the script within privilege mode using either `python monitor-interface.py` or `python3 monitor-interface.py`.
+3. The script will send email alerts if it detects any changes in the interface parameter values.
 
-1. First we need to upload the file monitor-interface.py into the flash file.
-2. We could execute this script within the privilege mode.
-	nexus#python monitor-interface.py  
-			OR
-	nexus#python3 monitor-interface.py  
-3. By executing this script, we will get the email alerts if the code has detected any change in the interface parameter value.
+**Applying Scheduling Configuration on Nexus Switches**
+- https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/system_management/configuration/guide/b_Cisco_Nexus_9000_Series_NX-OS_System_Management_Configuration_Guide/sm_8scheduler.html
+- To run the code automatically at specified intervals, you need to configure scheduling on Nexus switches.
+- Refer to the provided documentation link for details on scheduling configuration.
+- Example scheduling configuration is provided, which runs the script every 10 minutes.
 
+**Wrapping Up**
+1. The code is ready to be executed on Nexus switches.
+2. Scheduling configuration is applied to run the code at specific intervals (e.g., every 10 minutes).
+3. The code will send email alerts if it detects changes in interface parameter values.
 
-
-
-Apply Scheduling Configuration on Nexus Switches-
-
-Now to make this code run automatically after a specified time we need to now configure scheduling feature on Nexus Switches.
-For more information on Scheduling Configuration, kindly refer below document
-https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/6-x/system_management/configuration/guide/b_Cisco_Nexus_9000_Series_NX-OS_System_Management_Configuration_Guide/sm_8scheduler.html
-E.g.
-switch(config)# feature scheduler
-switch(config)# scheduler job name MONITOR_INTERFACE
-switch(config-job)# python monitor-interface.py
-
-		OR
-
-switch(config-job)# python3 monitor-interface.py
-
-switch(config)# scheduler schedule name REGULAR_INTERVAL
-switch(config-schedule)# job name MONITOR_INTERFACE
-switch(config-schedule)# time start now repeat 0:10
-
-
-
-
-Wrapping Up-
-1.	Code is ready to be executed
-2.	Scheduling configuration is applied to run the code after the specific time
-
-
-Now after every 10 min code will be executed and we will get email alerts if any change in the value has been detected by code.
-
- 
-
+This script can be a valuable tool for monitoring network interfaces on Cisco Nexus switches and receiving timely alerts when issues occur.
